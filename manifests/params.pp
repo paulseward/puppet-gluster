@@ -54,7 +54,7 @@ class gluster::params {
     'Debian': {
       $repo                 = true
       $repo_gpg_key_name    = 'A4703C37D3F4DE7F1819E980FE79BB52D5DC52DC'
-      $repo_gpg_key_source  = 'https://download.gluster.org/pub/gluster/glusterfs/LATEST/rsa.pub'
+      $repo_gpg_key_source  = "https://download.gluster.org/pub/gluster/glusterfs/$release/LATEST/rsa.pub"
 
       $server_package = 'glusterfs-server'
       $client_package = 'glusterfs-client'
