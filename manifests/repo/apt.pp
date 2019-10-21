@@ -35,6 +35,7 @@ class gluster::repo::apt (
   $repo_key_name   = $::gluster::params::repo_gpg_key_name,
   $repo_key_source = $::gluster::params::repo_gpg_key_source,
   $priority        = $::gluster::params::repo_priority,
+  $repo_legacy     = $::gluster::params::repo_legacy
 ) {
   include '::apt'
 
@@ -61,7 +62,13 @@ class gluster::repo::apt (
             /i\d86/      => 'i386',
             default      => false,
           }
-          $repo_url  = "http://download.gluster.org/pub/gluster/glusterfs/${repo_ver}/Debian/${::lsbdistcodename}/apt/"
+          # Workaround for archived legacy releases
+          if $repo_legacy {
+            $repo_url  = "http://download.gluster.org/pub/gluster/glusterfs/01.old-releases/${repo_ver}/Debian/${::lsbdistcodename}/apt/"
+          }
+          else {
+            $repo_url  = "http://download.gluster.org/pub/gluster/glusterfs/${repo_ver}/Debian/${::lsbdistcodename}/apt/"
+          }
         }
       }
     }

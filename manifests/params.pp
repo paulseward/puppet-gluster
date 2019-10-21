@@ -31,6 +31,9 @@ class gluster::params {
   # a priority in order to ensure that it is activated
   $repo_priority = undef
 
+  # Support for legacy versions
+  $repo_legacy   = false
+
   # Set distro/release specific names, repo versions, repo gpg keys, package versions, etc
   # if the user didn't specify a version, just use "installed" for package version.
   # if they did specify a version, assume they provided a valid one
